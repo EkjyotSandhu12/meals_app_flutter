@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import './category_item.dart';
-import './dummy_data.dart';
+import '../category_item.dart';
+import '../dummy_data.dart';
 
 class CategroyPage extends StatelessWidget {
   @override
@@ -18,7 +18,7 @@ class CategroyPage extends StatelessWidget {
         ),
         children: [
           ...DUMMY_CATEGORIES
-              .map((item) => CategroyItem(item.title, item.color))
+              .map((item) => CategroyItem(item.id, item.title, item.color))
               .toList()
         ],
       ),
