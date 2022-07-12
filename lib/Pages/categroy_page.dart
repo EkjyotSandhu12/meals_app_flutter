@@ -4,6 +4,8 @@ import '../category_item.dart';
 import '../dummy_data.dart';
 
 class CategroyPage extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

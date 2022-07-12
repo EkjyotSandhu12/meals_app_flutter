@@ -14,7 +14,7 @@ class CategroyItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(
-          '/FoodListPage',
+          FoodListPage.routeName,
           arguments: {'id' : id, 'title' : title}
         );
       },

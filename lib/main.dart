@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
             titleTextStyle: TextStyle(
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.w700,
-                fontSize: 20) //Fontweightis700 for bold
+                fontSize: 23) //Fontweightis700 for bold
             ),
         textTheme: TextTheme(
           headline1: TextStyle(
-            fontSize: 20,
+            fontSize: 17,
             fontFamily: 'RobotoCondensed',
             fontWeight: FontWeight.bold,
           ),
@@ -32,9 +32,10 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       title: "Meals App",
-      home: CategroyPage(),
+      initialRoute: '/', //default value is '/'
       routes: {
-        '/FoodListPage' : (_) => FoodListPage(),
+        '/' : (_) => CategroyPage(),
+        FoodListPage.routeName : (_) => FoodListPage(),
       },
     );
   }
