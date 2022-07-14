@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext ctx) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.light(
+        colorScheme: const ColorScheme.light(
           primary: Colors.pink,
         ),
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.w700,
                 fontSize: 23) //Fontweightis700 for bold
             ),
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           headline1: TextStyle(
             fontSize: 17,
             fontFamily: 'RobotoCondensed',
