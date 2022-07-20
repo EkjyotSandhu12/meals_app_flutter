@@ -8,9 +8,7 @@ class CategroyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Category")),
-      body: GridView(
+    return GridView(
         padding: const EdgeInsets.all(10),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           crossAxisSpacing: 10,
@@ -23,7 +21,6 @@ class CategroyPage extends StatelessWidget {
               .map((item) => CategroyItem(item.id, item.title, item.color))
               .toList()
         ],
-      ),
-    );
+      );
   }
 }

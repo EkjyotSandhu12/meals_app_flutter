@@ -1,16 +1,24 @@
-import 'Package:flutter/material.dart';
+import 'package:meals_app/Pages/meal_details_page.dart';
 import 'package:meals_app/models/meals.dart';
 
-class MealItem extends StatelessWidget {
+import 'Package:flutter/material.dart';
 
+class MealItem extends StatelessWidget {
+  String id;
   String imageUrl;
   String title;
   Complexity complexity;
   Affordability affordability;
   int duration;
+  Function deleteFood;
 
-  MealItem({required this.imageUrl, required this.title, required this.complexity, required this.affordability,
-             required this.duration});
+  MealItem({required this.id,
+    required this.imageUrl,
+    required this.title,
+    required this.complexity,
+    required this.affordability,
+    required this.duration,
+    required this.deleteFood});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +29,16 @@ class MealItem extends StatelessWidget {
       ),
       elevation: 10,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context)
+              .pushNamed(
+            MealDetailPage.routeName,
+            arguments: id,
+          ).then((value) {
+            if(value != null) deleteFood(value);
+          }
+          );
+        },
         child: Column(
           children: [
             LayoutBuilder(
@@ -35,7 +52,7 @@ class MealItem extends StatelessWidget {
                       ),
                       child: Image.network(
                         width: double.infinity,
-                        height: constraints.maxWidth/1.5,
+                        height: constraints.maxWidth / 1.5,
                         imageUrl,
                         fit: BoxFit.cover,
                       ),
@@ -49,7 +66,8 @@ class MealItem extends StatelessWidget {
                         width: constraints.maxWidth * 0.6,
                         child: Text(
                           title,
-                          style: const TextStyle(color: Colors.white, fontSize: 20),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 20),
                           softWrap: true,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 3,
