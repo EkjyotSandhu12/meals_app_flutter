@@ -3,27 +3,23 @@ import 'package:meals_app/models/meals.dart';
 
 import 'Package:flutter/material.dart';
 
-class MealItem extends StatefulWidget {
+class MealItem extends StatelessWidget {
   String id;
   String imageUrl;
   String title;
   Complexity complexity;
   Affordability affordability;
   int duration;
+  Function deleteFood;
 
-  MealItem(
-      {required this.id,
-      required this.imageUrl,
-      required this.title,
-      required this.complexity,
-      required this.affordability,
-      required this.duration});
+  MealItem({required this.id,
+    required this.imageUrl,
+    required this.title,
+    required this.complexity,
+    required this.affordability,
+    required this.duration,
+    required this.deleteFood});
 
-  @override
-  State<MealItem> createState() => _MealItemState();
-}
-
-class _MealItemState extends State<MealItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -37,7 +33,10 @@ class _MealItemState extends State<MealItem> {
           Navigator.of(context)
               .pushNamed(
             MealDetailPage.routeName,
-            arguments: widget.id,
+            arguments: id,
+          ).then((value) {
+            if(value != null) deleteFood(value);
+          }
           );
         },
         child: Column(
@@ -54,7 +53,7 @@ class _MealItemState extends State<MealItem> {
                       child: Image.network(
                         width: double.infinity,
                         height: constraints.maxWidth / 1.5,
-                        widget.imageUrl,
+                        imageUrl,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -66,7 +65,7 @@ class _MealItemState extends State<MealItem> {
                         color: Colors.black54,
                         width: constraints.maxWidth * 0.6,
                         child: Text(
-                          widget.title,
+                          title,
                           style: const TextStyle(
                               color: Colors.white, fontSize: 20),
                           softWrap: true,
@@ -88,19 +87,19 @@ class _MealItemState extends State<MealItem> {
                   Row(
                     children: [
                       const Icon(Icons.timer),
-                      Text("${widget.duration} Minutes"),
+                      Text("$duration Minutes"),
                     ],
                   ),
                   Row(
                     children: [
                       const Icon(Icons.attach_money),
-                      Text(widget.affordability.name),
+                      Text(affordability.name),
                     ],
                   ),
                   Row(
                     children: [
                       const Icon(Icons.work),
-                      Text(widget.complexity.name),
+                      Text(complexity.name),
                     ],
                   ),
                 ],

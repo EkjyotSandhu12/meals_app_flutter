@@ -47,7 +47,7 @@ class _TabsPageState extends State<TabsPage> {
         ),
         body: TabBarView(
           children: [
-            CategoryPage(),
+            CategroyPage(),
             FavoritesPage()
           ],
         ),

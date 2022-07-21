@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../dummy_data.dart';
 
-class MealDetailPage extends StatefulWidget {
+class MealDetailPage extends StatelessWidget {
   static const routeName = "/meal_detail_page";
 
-  @override
-  State<MealDetailPage> createState() => _MealDetailPageState();
-}
-
-class _MealDetailPageState extends State<MealDetailPage> {
   Widget headingText(BuildContext context, String text) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -39,7 +34,6 @@ class _MealDetailPageState extends State<MealDetailPage> {
 
   Widget build(BuildContext context) {
     String mealId = ModalRoute.of(context)?.settings.arguments as String;
-
     final selectedMeal =
         DUMMY_MEALS.firstWhere((element) => element.id == mealId);
 
@@ -81,7 +75,7 @@ class _MealDetailPageState extends State<MealDetailPage> {
                   children: [
                     ListTile(
                       leading: CircleAvatar(
-                        child: Text((index + 1).toString()),
+                        child: Text(index.toString()),
                       ),
                       title: Text(selectedMeal.steps[index]),
                       trailing: const Text("trailing"),
@@ -96,12 +90,10 @@ class _MealDetailPageState extends State<MealDetailPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            selectedMeal.isFavourite ? selectedMeal.isFavourite = false : selectedMeal.isFavourite = true;
-          });
+        child: Icon(Icons.remove),
+        onPressed: () {
+          Navigator.of(context).pop(selectedMeal.id);
         },
-        child: selectedMeal.isFavourite ? Icon(Icons.star) : Icon(Icons.star_border),
       ),
     );
   }

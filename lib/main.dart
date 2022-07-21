@@ -5,14 +5,13 @@ import 'package:meals_app/Pages/meal_details_page.dart';
 import 'Pages/categroy_page.dart';
 import 'Pages/food_list_page.dart';
 import 'Pages/tabs_page.dart';
-import 'models/meals.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  Widget build(BuildContext context) {
+  Widget build(BuildContext ctx) {
     return MaterialApp(
       theme: ThemeData(
         indicatorColor: Colors.pinkAccent,
@@ -43,17 +42,17 @@ class MyApp extends StatelessWidget {
       title: "Meals App",
       initialRoute: '/', //default value is '/'
       routes: {
-        '/' : (_) => const TabsPage(),
+        '/' : (_) => TabsPage(),
         FoodListPage.routeName : (_) => FoodListPage(),
         MealDetailPage.routeName : (_) => MealDetailPage(),
         FiltersPage.routeName : (_) => FiltersPage(),
       },
       onGenerateRoute: (settings){
         print(settings.name);
-        return MaterialPageRoute(builder: (_) => CategoryPage());
+        return MaterialPageRoute(builder: (_) => CategroyPage());
       },
       onUnknownRoute: (setting){
-        return MaterialPageRoute(builder: (_) => CategoryPage());
+        return MaterialPageRoute(builder: (_) => CategroyPage());
       },
     );
   }

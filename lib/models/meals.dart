@@ -26,10 +26,9 @@ class Meal{
   final bool isVegan;
   final bool isVegetarian;
   final bool isLactoseFree;
-  bool isFavourite;
   final int duration;
 
-   Meal({this.isFavourite = false, required this.id,required this.title,required this.categories,required this.imageUrl, required this.ingredients, required this.isGlutenFree,
+  const Meal({required this.id,required this.title,required this.categories,required this.imageUrl, required this.ingredients, required this.isGlutenFree,
 required this.isLactoseFree, required this.isVegan, required this.isVegetarian, required this.affordability, required this.steps,required this.complexity, required this.duration});
 
 }
