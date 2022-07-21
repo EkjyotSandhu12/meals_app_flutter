@@ -4,7 +4,9 @@ import '../dummy_data.dart';
 import '../widgets/category_item.dart';
 
 
-class CategroyPage extends StatelessWidget {
+class CategoryPage extends StatelessWidget {
+
+  static const routeName = "/categroy_page";
 
   @override
   Widget build(BuildContext context) {
