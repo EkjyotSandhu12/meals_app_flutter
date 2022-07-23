@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/widgets/main_drawer.dart';
 
-import '../widgets/main_drawer.dart';
 import 'categroy_page.dart';
 import 'favourites_page.dart';
 
@@ -12,48 +12,44 @@ class TabsPage extends StatefulWidget {
 }
 
 class _TabsPageState extends State<TabsPage> {
+
+  int selectedIndex = 0;
+
+  List<Widget> pages = [
+    CategoryPage(),
+    FavoritesPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("MealsApp"),
-        ),
-        bottomNavigationBar: Container(
-          color: Theme.of(context).colorScheme.primary,
-          child: const TabBar(
-            unselectedLabelColor: Colors.black54,
-            indicatorColor: Colors.white,
-            labelColor: Colors.white,
-            tabs: [
-              Tab(
-                icon: Icon(
-                  Icons.category,
-                ),
-                text: 'Categories',
-              ),
-              Tab(
-                icon: Icon(
-                  Icons.star,
-                ),
-                text: 'Favorites',
-              ),
-            ],
-            indicatorSize: TabBarIndicatorSize.label,
-            indicatorPadding: EdgeInsets.all(10),
-          ),
-        ),
-        body: TabBarView(
-          children: [
-            CategoryPage(),
-            FavoritesPage()
-          ],
-        ),
-        drawer: MainDrawer(),
-
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("MealsApp"),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+
+        currentIndex: selectedIndex,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black54,
+        onTap: (index){
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            label: "Categories",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: "Favourites",
+          ),
+        ],
+      ),
+      drawer: MainDrawer(),
+      body: pages[selectedIndex],
     );
   }
 }

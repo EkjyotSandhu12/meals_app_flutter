@@ -15,7 +15,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
     List<Meal> mealsList =
         DUMMY_MEALS.where((meal) => meal.isFavourite).toList();
     return mealsList.isEmpty
-        ? Center(child: Text("Add Some Favourites!"))
+        ? const Center(child: Text("Add Some Favourites!"))
         : ListView.builder(
             itemCount: mealsList.length,
             itemBuilder: (context, index) {
